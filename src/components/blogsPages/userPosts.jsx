@@ -7,7 +7,8 @@ const UserPosts = () => {
   const [editPost, setEditPost] = useState(null);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const username = 'user1';
+
+  const username = localStorage.getItem('username');
 
   useEffect(() => {
     // Fetch all posts
