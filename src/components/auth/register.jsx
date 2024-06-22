@@ -15,6 +15,7 @@ function Register() {
         password,
       });
       console.log(response.data);
+      
     } catch (error) {
       console.error('Error registering user:', error);
     }
