@@ -15,7 +15,7 @@ function Login() {
         password,
       });
       localStorage.setItem('token', response.data.token);
-      navigate('/add-post');
+      navigate('/');
     } catch (error) {
       console.error('Error logging in:', error);
     }
