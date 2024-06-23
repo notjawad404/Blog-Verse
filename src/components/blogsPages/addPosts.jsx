@@ -1,29 +1,30 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function AddPost() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const user1 = localStorage.getItem('username');
 
+  const navigate = useNavigate();
+
   const handleAddPost = async (e) => {
     e.preventDefault();
     console.log(user1);
     try {
-      const token = localStorage.getItem('token');
-      console.log(token);
       const response = await axios.post('http://localhost:5000/posts', {
         username: user1,
         title,
         content,
-      }, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
       });
       console.log(response.data);
+      navigate('/');
     } catch (error) {
       console.error('Error adding post:', error);
+      if (error.response) {
+        console.error('Error response data:', error.response.data);
+      }
     }
   };
 
