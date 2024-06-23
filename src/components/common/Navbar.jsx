@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import blogVerse from "../../assets/blogVerse.jpeg";
 
 const Navbar = () => {
 
@@ -14,9 +15,12 @@ const Navbar = () => {
     }
 
   return (
-    <nav className="bg-blue-600 p-4">
+    <nav className="bg-blue-600 p-1">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-lg font-bold">Blogging Site</div>
+        <div className="text-white text-lg font-bold">
+        <img src={blogVerse} alt="Blog-Verse" className="w-20 h-20 inline-block mx-2 rounded-full" />
+        Blog Verse
+        </div>
         <div className="space-x-4">
           <Link to="/" className="text-white hover:text-gray-300">Home</Link>
           <Link to="/addpost" className="text-white hover:text-gray-300">Add Posts</Link>
