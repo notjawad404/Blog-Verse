@@ -14,7 +14,7 @@ const UserPosts = () => {
     // Fetch all posts
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/posts');
+        const response = await axios.get('https://blog-verse-node-backend.vercel.app/posts');
         setPosts(response.data);
       } catch (error) {
         console.error("Error fetching posts:", error);
@@ -38,7 +38,7 @@ const UserPosts = () => {
 
   const handleUpdate = async () => {
     try {
-      const response = await axios.put(`http://localhost:5000/posts/${editPost}`, { title, content });
+      const response = await axios.put(`https://blog-verse-node-backend.vercel.app/posts/${editPost}`, { title, content });
       const updatedPosts = posts.map(post => post._id === editPost ? response.data : post);
       setPosts(updatedPosts);
       setEditPost(null);
@@ -51,7 +51,7 @@ const UserPosts = () => {
 
   const handleDelete = async (postId) => {
     try {
-      await axios.delete(`http://localhost:5000/posts/${postId}`);
+      await axios.delete(`https://blog-verse-node-backend.vercel.app/posts/${postId}`);
       const updatedPosts = posts.filter(post => post._id !== postId);
       setPosts(updatedPosts);
     } catch (error) {

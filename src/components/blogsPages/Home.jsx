@@ -12,7 +12,7 @@ const HomePage = () => {
     // Fetch all posts
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/posts');
+        const response = await axios.get('https://blog-verse-node-backend.vercel.app/posts');
         setPosts(response.data);
         setFilteredPosts(response.data);
       } catch (error) {

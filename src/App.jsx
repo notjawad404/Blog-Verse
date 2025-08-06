@@ -13,7 +13,7 @@ export default function App() {
 
     <>
       <BrowserRouter>
-        <Routes>
+        <Routes key={token ? "auth" : "guest"}>
           {token ? (
             <>
               <Route path="/" element={<HomePage />} />

@@ -1,6 +1,6 @@
 
 
-import  { useState } from 'react';
+import  { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -9,12 +9,20 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-    const Navigate1 = useNavigate();
+  const Navigate1 = useNavigate();
+
+    // Redirect if user is already logged in
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      Navigate1('/');
+    }
+  }, [Navigate1]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/login', { email, password });
+      const response = await axios.post('https://blog-verse-node-backend.vercel.app/login', { email, password });
       alert(`Login successful! Token: ${response.data.token}`);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('username', response.data.username);
