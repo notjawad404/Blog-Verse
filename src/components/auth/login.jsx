@@ -22,7 +22,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://blog-verse-node-backend.vercel.app/login', { email, password });
+      const response = await axios.post('https://blog-verse-node-backend.vercel.app/api/auth/login', { email, password });
       alert(`Login successful! Token: ${response.data.token}`);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('username', response.data.username);

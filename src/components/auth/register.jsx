@@ -10,7 +10,7 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://blog-verse-node-backend.vercel.app/register', {
+      const response = await axios.post('https://blog-verse-node-backend.vercel.app/api/auth/register', {
         username,
         email,
         password,
