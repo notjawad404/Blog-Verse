@@ -14,7 +14,7 @@ const UserPosts = () => {
     // Fetch all posts
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('https://blog-verse-node-backend.vercel.app/posts');
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/posts`);
         setPosts(response.data);
       } catch (error) {
         console.error("Error fetching posts:", error);
@@ -38,7 +38,7 @@ const UserPosts = () => {
 
   const handleUpdate = async () => {
     try {
-      const response = await axios.put(`https://blog-verse-node-backend.vercel.app/posts/${editPost}`, { title, content });
+      const response = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/posts/${editPost}`, { title, content });
       const updatedPosts = posts.map(post => post._id === editPost ? response.data : post);
       setPosts(updatedPosts);
       setEditPost(null);

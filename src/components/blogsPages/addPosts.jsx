@@ -13,7 +13,7 @@ function AddPost() {
     e.preventDefault();
     console.log(user1);
     try {
-      const response = await axios.post('https://blog-verse-node-backend.vercel.app/posts', {
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/posts`, {
         username: user1,
         title,
         content,
