@@ -1,7 +1,6 @@
 import  { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Navbar from '../common/Navbar';
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
@@ -31,8 +30,7 @@ const HomePage = () => {
   }, [title, posts]);
 
   return (
-    <div className="container mx-auto p-4">
-    <Navbar />
+    <div className="container p-4">
       <h1 className="text-2xl font-bold mb-4">Posts</h1>
       <Link to="/userposts" className="bg-blue-500 text-white p-2 rounded mb-4 inline-block">User Posts</Link>
       <input

@@ -5,6 +5,7 @@ import Login from "./components/auth/login";
 import AddPost from "./components/blogsPages/addPosts";
 import UserPosts from "./components/blogsPages/userPosts";
 import HomePage from "./components/blogsPages/Home";
+import Navbar from "./components/common/Navbar";
 
 export default function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -20,6 +21,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <Navbar token={token} setToken={setToken} />
       <Routes key={token ? "auth" : "guest"}>
         {token ? (
           <>
