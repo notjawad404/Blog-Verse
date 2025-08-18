@@ -1,18 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import blogVerse from "../../assets/blogVerse.jpeg";
 
-const Navbar = () => {
+const Navbar = ({ token, setToken }) => {
   const navigate = useNavigate();
-  const [token, setToken] = useState(localStorage.getItem("token") || null);
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setToken(localStorage.getItem("token"));
-    };
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
-  }, []);
 
   const logout = () => {
     // Clear authentication
@@ -22,15 +12,14 @@ const Navbar = () => {
 
     alert("Logout Successfully");
 
-    // Navigate after state update to ensure rerender
-    setTimeout(() => {
-      navigate("/login", { replace: true });
-    }, 0);
+    // Redirect to login page
+    navigate("/login", { replace: true });
   };
 
   return (
     <nav className="bg-blue-600 p-2">
       <div className="container mx-auto flex justify-between items-center">
+        {/* Logo + Title */}
         <div className="text-white text-lg font-bold flex items-center">
           <img
             src={blogVerse}
@@ -40,6 +29,7 @@ const Navbar = () => {
           Blog Verse
         </div>
 
+        {/* Nav Links */}
         <div className="space-x-4">
           <Link to="/" className="text-white hover:text-gray-300">
             Home
